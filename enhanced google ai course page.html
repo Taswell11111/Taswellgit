@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google AI Essentials Specialisation</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Custom styles to complement Tailwind */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fc;
+        }
+        .course-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header Section -->
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-blue-600">Google AI Essentials</h1>
+            <p class="mt-3 text-lg text-gray-600">Your complete specialisation program overview.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Course Data -->
+            <script>
+                const courses = [
+                    {
+                        title: "Introduction to AI",
+                        outcomes: [
+                            "Define the field of AI.",
+                            "Explain how AI functions at a basic level, including how AI technology is trained to learn from data.",
+                            "Describe the capabilities and limitations of AI tools.",
+                            "Recognise the importance of human oversight when using AI."
+                        ]
+                    },
+                    {
+                        title: "Maximise Productivity With AI Tools",
+                        outcomes: [
+                            "Leverage generative AI tools to speed up work tasks and boost your productivity.",
+                            "Examine the important role humans play in the effective use of AI.",
+                            "Understand the types of workplace tasks you can augment with AI.",
+                            "Determine if AI is right for a given task and how to use AI to accelerate workflows."
+                        ]
+                    },
+                    {
+                        title: "Discover the Art of Prompting",
+                        outcomes: [
+                            "Write effective prompts to get the output you want.",
+                            "Learn how to incorporate prompting techniques, such as few-shot prompting, into your work.",
+                            "Understand how generative AI tools produce output and the importance of evaluating output before using it.",
+                            "Write clear and specific prompts and produce outputs that help accomplish workplace tasks."
+                        ]
+                    },
+                    {
+                        title: "Use AI Responsibly",
+                        outcomes: [
+                            "Use AI responsibly by mitigating unfair biases and inaccuracies.",
+                            "Apply a framework of AI harms to sample workplace scenarios.",
+                            "Recognise the security risks of using AI in the workplace.",
+                            "Gain an understanding of how to use AI responsibly and effectively, and use a checklist to help you do it."
+                        ]
+                    },
+                    {
+                        title: "Stay Ahead of the AI Curve",
+                        outcomes: [
+                            "Continue developing your skills within the current and emerging AI landscape.",
+                            "Learn about the ways organisations have leveraged AI and consider how these innovations may inspire your own AI-powered workplace solutions.",
+                            "Develop a strategy to stay up-to-date with future AI developments."
+                        ]
+                    }
+                ];
+            </script>
+
+            <!-- Dynamically generate course cards -->
+            <div id="course-container" class="grid grid-cols-1 md:grid-cols-1 gap-8 col-span-full">
+                <!-- Course cards will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </main>
+    
+    <footer class="text-center py-6 mt-8 bg-white border-t">
+        <p class="text-gray-500">&copy; 2024 Google AI Program. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const container = document.getElementById('course-container');
+
+            courses.forEach((course, index) => {
+                const courseEl = document.createElement('div');
+                courseEl.className = 'course-card bg-white rounded-xl shadow-lg overflow-hidden';
+                
+                const outcomesList = course.outcomes.map(item => 
+                    `<li class="flex items-start space-x-3">
+                        <svg class="flex-shrink-0 h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                        <span>${item}</span>
+                    </li>`
+                ).join('');
+
+                courseEl.innerHTML = `
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold text-gray-800 border-b-4 border-blue-500 pb-3 mb-4">
+                            Course ${index + 1}: ${course.title}
+                        </h2>
+
+                        <div class="outcomes mt-6">
+                            <h3 class="text-lg font-semibold text-gray-700 mb-3 flex items-center">
+                                <svg class="h-5 w-5 mr-2 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                                Learning Outcomes
+                            </h3>
+                            <ul class="space-y-2 text-gray-600">
+                                ${outcomesList}
+                            </ul>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(courseEl);
+            });
+        });
+    </script>
+</body>
+</html>
